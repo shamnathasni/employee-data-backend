@@ -1,0 +1,20 @@
+const express = require("express")
+const app = express()
+const cors = require("cors")
+require('dotenv').config()
+
+const controller = require("./controller/controller")
+
+require("./configuration/dbConfiguration")()
+
+app.use(cors({
+    origin:["http://localhost:5173"]
+}))
+app.use(express.json())
+app.use(express.urlencoded({extendsed:true}))
+
+app.post("/addData",controller.addEmployeeData)
+
+app.listen(3000,() => {
+    console.log(`Server is running on http://localhost:3000`);
+})
