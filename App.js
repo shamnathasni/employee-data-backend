@@ -13,6 +13,8 @@ app.use(cors({
 app.use(express.json())
 app.use(express.urlencoded({extendsed:true}))
 
+app.get("/employeeList",controller.getEmployers)
+app.get("/serachdata",controller.getSearch)
 app.post("/addData",controller.addEmployeeData)
 
 app.listen(3000,() => {

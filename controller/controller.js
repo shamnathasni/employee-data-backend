@@ -19,6 +19,33 @@ const addEmployeeData= async(req,res) => {
     }
 }
 
+const getEmployers = async(req,res) => {
+    console.log(77);
+    try {
+        console.log(77);
+        const employers = await Employee.find({})
+        console.log(employers,"emplores");
+        res.json({status:true,employers})
+    } catch (error) {
+        console.log(error); 
+    }
+}
+
+const getSearch = async(req,res)=>{
+    try {
+        const { searchData } = req.query
+        console.log(searchData,1);
+        console.log(req.query,2);
+        const result = await Employee.find({name:{$regex:new RegExp('^' + searchData, 'i') }})
+        console.log(result,3);
+        res.json({result,status:true})
+    } catch (error) {
+        console.log(error);   
+    }
+}
+
 module.exports = {
-    addEmployeeData
+    addEmployeeData,
+    getEmployers,
+    getSearch
 }
