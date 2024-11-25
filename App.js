@@ -8,7 +8,7 @@ const controller = require("./controller/controller")
 require("./configuration/dbConfiguration")()
 
 app.use(cors({
-    origin:["http://localhost:5173"]
+    origin:["https://employeedatafrontend.netlify.app/"]
 }))
 app.use(express.json())
 app.use(express.urlencoded({extendsed:true}))
